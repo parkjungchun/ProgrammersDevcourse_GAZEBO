@@ -1,10 +1,17 @@
 <?xml version="1.0" ?>
 
-<robot name="robot">
+<robot name="robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find robot_description)/urdf/robot.gazebo" />
+
+    <!-- Parameters -->
+    <xacro:property name="chassis_mass" value="10" />
+    <xacro:property name="pi" value="3.1415926535897931"/>
+
     <!-- Link - chassis -->
     <link name="link_chassis">
         <inertial>
-            <mass value="10" />
+            <mass value="${chassis_mass}" />
             <origin xyz="0 0 0.3" rpy="0 0 0" />
             <inertia ixx="1.5417" ixy="0" ixz="0" iyy="3.467" iyz="0" izz="4.742" />
         </inertial>
@@ -100,13 +107,13 @@
 
         <!-- Tires -->
         <collision>
-            <origin rpy="1.5707 0 0" xyz="0 0.18 0" />
+            <origin rpy="${pi/2} 0 0" xyz="0 0.18 0" />
             <geometry>
                 <cylinder length="0.12" radius="0.4"/>
             </geometry>
         </collision>
         <visual>
-            <origin rpy="1.5707 0 0" xyz="0 0.18 0" />
+            <origin rpy="${pi/2} 0 0" xyz="0 0.18 0" />
             <geometry>
                 <mesh filename="package://robot_description/meshes/wheel.stl" />
             </geometry>
@@ -117,13 +124,13 @@
 
         <!-- Axle -->
         <collision>
-            <origin rpy="1.5707 0 0" xyz="0 0.06 0" />
+            <origin rpy="${pi/2} 0 0" xyz="0 0.06 0" />
             <geometry>
                 <cylinder length="0.12" radius="0.08"/>
             </geometry>
         </collision>
         <visual>
-            <origin rpy="1.5707 0 0" xyz="0 0.06 0" />
+            <origin rpy="${pi/2} 0 0" xyz="0 0.06 0" />
             <geometry>
                 <cylinder length="0.12" radius="0.08"/>
             </geometry>
@@ -134,7 +141,7 @@
 
         <!-- Hubcap -->
         <visual>
-            <origin rpy="1.5707 0 0" xyz="0 0.18 0" />
+            <origin rpy="${pi/2} 0 0" xyz="0 0.18 0" />
             <geometry>
                 <box size="0.02 0.5 0.02" />
             </geometry>
@@ -163,13 +170,13 @@
 
         <!-- Tires -->
         <collision>
-            <origin rpy="1.5707 0 0" xyz="0 -0.18 0" />
+            <origin rpy="${pi/2} 0 0" xyz="0 -0.18 0" />
             <geometry>
                 <cylinder length="0.12" radius="0.4"/>
             </geometry>
         </collision>
         <visual>
-            <origin rpy="1.5707 0 0" xyz="0 -0.18 0" />
+            <origin rpy="${pi/2} 0 0" xyz="0 -0.18 0" />
             <geometry>
                 <mesh filename="package://robot_description/meshes/wheel.stl" />
             </geometry>
@@ -180,13 +187,13 @@
 
         <!-- Axle -->
         <collision>
-            <origin rpy="1.5707 0 0" xyz="0 -0.06 0" />
+            <origin rpy="${pi/2} 0 0" xyz="0 -0.06 0" />
             <geometry>
                 <cylinder length="0.12" radius="0.08"/>
             </geometry>
         </collision>
         <visual>
-            <origin rpy="1.5707 0 0" xyz="0 -0.06 0" />
+            <origin rpy="${pi/2} 0 0" xyz="0 -0.06 0" />
             <geometry>
                 <cylinder length="0.12" radius="0.08"/>
             </geometry>
@@ -197,7 +204,7 @@
 
         <!-- Hubcap -->
         <visual>
-            <origin rpy="1.5707 0 0" xyz="0 -0.18 0" />
+            <origin rpy="${pi/2} 0 0" xyz="0 -0.18 0" />
             <geometry>
                 <box size="0.02 0.5 0.02" />
             </geometry>
@@ -205,5 +212,108 @@
                 <color rgba="0.6 0.6 0.6 1" />
             </material>
         </visual>
+    </link>
+
+    <!-- Laser scan -->
+    <joint name="joint_laser_scan_chassis" type="fixed">
+        <origin rpy="0 0 0" xyz="0.8 0 0.3" />
+        <child link="link_laser_scan" />
+        <parent link="link_chassis" />
+        <joint_properties damping="1.0" friction="1.0" />
+    </joint>
+    <link name="link_laser_scan">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="0.5" />
+            <inertia ixx="0.000252666666667" ixy="0" ixz="0" iyy="0.000252666666667" iyz="0" izz="0.0005"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.15" length="0.20"/>
+            </geometry>
+            <material name="Red">
+                <color rgba="0.7 0.1 0.1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.15" length="0.20"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- Robot tail -->
+    <joint name="joint_tail" type="continuous">
+        <origin rpy="0 0 0" xyz="-1 0 0" />
+        <child link="link_tail" />
+        <axis rpy="0 0 0" xyz="0 1 0" />
+        <parent link="link_chassis" />
+        <joint_properties damping="1.0" friction="1.0" />
+    </joint>
+    <link name="link_tail">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="0.5" />
+            <inertia ixx="0.000252666666667" ixy="0" ixz="0" iyy="0.000252666666667" iyz="0" izz="0.0005"/>
+        </inertial>
+        <visual>
+            <origin xyz="-0.2 0 0" rpy="0 ${pi/2} 0" />
+            <geometry>
+                <cylinder radius="0.05" length="0.40"/>
+            </geometry>
+            <material name="Red">
+                <color rgba="0.7 0.1 0.1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="-0.2 0 0" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder radius="0.05" length="0.40"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- Transmission -->
+    <transmission name="tran_tail">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_tail">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor_joint_tail">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <!-- Camera -->
+    <joint name="joint_camera_chassis" type="fixed">
+        <origin rpy="0 0 0" xyz="0.8 0 0.5" />
+        <child link="link_camera" />
+        <parent link="link_chassis" />
+        <joint_properties damping="1.0" friction="1.0" />
+    </joint>
+    <link name="link_camera">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="0.5" />
+            <inertia ixx="0.000252666666667" ixy="0" ixz="0" iyy="0.000252666666667" iyz="0" izz="0.0005"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.05 0.3 0.2" />
+            </geometry>
+            <material name="Red">
+                <color rgba="0.7 0.1 0.1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.05 0.3 0.2" />
+            </geometry>
+        </collision>    
     </link>
 </robot>

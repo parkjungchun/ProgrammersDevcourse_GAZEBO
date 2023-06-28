@@ -1,0 +1,178 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+    <world name="default">
+
+        <!-- A global light source -->
+        <include>
+            <uri>model://sun</uri>
+        </include>
+
+        <!-- A ground plane -->
+        <include>
+            <uri>model://ground_plane</uri>
+        </include>
+
+        <!-- +X grey_wall -->
+        <population name="grey_wall_population_1">
+            <model name="grey_wall_1">
+                <include>
+                    <static>true</static>
+                    <uri>model://grey_wall</uri>
+                </include>
+            </model>
+            <pose>3.5 10 0.3 0 0 0</pose>
+            <box>
+                <size>20 20 0.01</size>
+            </box>
+            <model_count>3</model_count>
+            <distribution>
+                <type>linear-x</type>
+            </distribution>
+        </population>
+
+        <!-- -X grey_wall -->
+        <population name="grey_wall_population_2">
+            <model name="grey_wall_2">
+                <include>
+                    <static>true</static>
+                    <uri>model://grey_wall</uri>
+                </include>
+            </model>
+            <pose>3.5 -10 0.3 0 0 0</pose>
+            <box>
+                <size>20 20 0.01</size>
+            </box>
+            <model_count>3</model_count>
+            <distribution>
+                <type>linear-x</type>
+            </distribution>
+        </population>
+
+        <!-- +Y grey_wall -->
+        <population name="grey_wall_population_3">
+            <model name="grey_wall_3">
+                <include>
+                    <static>true</static>
+                    <uri>model://grey_wall</uri>
+                    <pose>0 0 0 0 0 1.57</pose>
+                </include>
+            </model>
+            <pose>10 3.5 0.3 0 0 0</pose>
+            <box>
+                <size>20 20 0.01</size>
+            </box>
+            <model_count>3</model_count>
+            <distribution>
+                <type>linear-y</type>
+            </distribution>
+        </population>
+
+        <!-- -Y grey_wall -->
+        <population name="grey_wall_population_4">
+            <model name="grey_wall_4">
+                <include>
+                    <static>true</static>
+                    <uri>model://grey_wall</uri>
+                    <pose>0 0 0 0 0 1.57</pose>
+                </include>
+            </model>
+            <pose>-10 3.5 0.3 0 0 0</pose>
+            <box>
+                <size>20 20 0.01</size>
+            </box>
+            <model_count>3</model_count>
+            <distribution>
+                <type>linear-y</type>
+            </distribution>
+        </population>
+
+
+        <!-- random models population -->
+        <population name="custom_model_population">
+            <model name="custom_model">
+                <include>
+                <static>false</static>
+                <uri>model://custom_mid_obj</uri>
+                </include>
+            </model>
+            <pose>0 0 0.2 0 0 0</pose>
+            <box>
+                <size>10 10 0.01</size>
+            </box>
+            <distribution>
+                <type>grid</type>
+                <rows>2</rows>
+                <cols>2</cols>
+                <step>5 5 0</step>
+            </distribution>
+        </population>
+
+        <!-- Model -->
+        <model name="custom_model_moving_1">
+            <pose>7 0 0 0 0 1.57</pose>
+            <static>false</static>
+            <include>
+                <uri>model://custom_mid_obj</uri>
+            </include>
+
+            <!-- import plugin -->
+            <plugin name="moving_plugin_y" filename="libmoving_plugin_y.so">
+                <direction>0</direction>
+                <linear_vel>1.0</linear_vel>
+                <iterations>3000</iterations>
+            </plugin>
+        </model>
+
+        <!-- Model -->
+        <model name="custom_model_moving_2">
+            <pose>-7 0 0 0 0 1.57</pose>
+            <static>false</static>
+            <include>
+                <uri>model://custom_mid_obj</uri>
+            </include>
+
+            <!-- import plugin -->
+            <plugin name="moving_plugin_y" filename="libmoving_plugin_y.so">
+                <direction>2</direction>
+                <linear_vel>1.0</linear_vel>
+                <iterations>3000</iterations>
+            </plugin>
+        </model>
+
+        <!-- Model -->
+        <model name="custom_model_moving_3">
+            <pose>0 -7 0 0 0 1.57</pose>
+            <static>false</static>
+            <include>
+                <uri>model://custom_mid_obj</uri>
+            </include>
+
+            <!-- import plugin -->
+            <plugin name="moving_plugin_y" filename="libmoving_plugin_y.so">
+                <direction>3</direction>
+                <linear_vel>1.0</linear_vel>
+                <iterations>3000</iterations>
+            </plugin>
+        </model>
+
+        <!-- Model -->
+        <model name="custom_model_moving_4">
+            <pose>0 7 0 0 0 1.57</pose>
+            <static>false</static>
+            <include>
+                <uri>model://custom_mid_obj</uri>
+            </include>
+
+            <!-- import plugin -->
+            <plugin name="moving_plugin_y" filename="libmoving_plugin_y.so">
+                <direction>1</direction>
+                <linear_vel>1.0</linear_vel>
+                <iterations>3000</iterations>
+            </plugin>
+        </model>
+
+
+
+
+    </world>
+</sdf>
