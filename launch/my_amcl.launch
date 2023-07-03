@@ -19,7 +19,7 @@
     </node>
 
     <!-- Visulization -->
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find husky_navigation)/rviz/amcl.rviz"/>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find final_project)/rviz/amcl.rviz"/>
 
     <!-- Move base -->
     <!-- <include file="$(find turtlebot_navigation)/launch/includes/move_base.launch.xml"/> -->

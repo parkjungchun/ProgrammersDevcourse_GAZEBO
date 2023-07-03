@@ -7,17 +7,7 @@
         <remap from="scan" to="$(arg scan_topic)" />
     </node>
 
-    <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot_rviz_launchers)/rviz/gmapping_demo.rviz"/> -->
-
-    <!-- <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
-        <param name="publish_frequency" type="double" value="30.0" />
-    </node> -->
-
-    <!-- <param name="robot_description" command="$(find xacro)/xacro $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
-
-    <node name="robot_state_publisher_turtlebot3" pkg="robot_state_publisher" type="robot_state_publisher"
-        respawn="true" output="screen">
-        <param name="publish_frequency" type="double" value="5.0" />
-    </node> -->
+    <!-- Visulization -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find final_project)/rviz/gmapping.rviz"/>
 
 </launch>
