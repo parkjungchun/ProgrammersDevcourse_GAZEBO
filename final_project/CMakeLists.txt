@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(mid_project)
+project(final_project)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -7,15 +7,10 @@ project(mid_project)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-
-find_package(gazebo REQUIRED)
-
 find_package(catkin REQUIRED COMPONENTS
-  gazebo_plugins
-  gazebo_ros
-  roscpp
   rospy
   urdf
+  xacro
 )
 
 ## System dependencies are found with CMake's conventions
@@ -109,8 +104,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES mid_project
-#  CATKIN_DEPENDS gazebo gazebo_plugins gazebo_ros roscpp rospy urdf
+#  LIBRARIES final_project
+#  CATKIN_DEPENDS rospy urdf xacro
 #  DEPENDS system_lib
 )
 
@@ -125,16 +120,9 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-include_directories(${GAZEBO_INCLUDE_DIRS})
-link_directories(${GAZEBO_LIBRARY_DIRS})
-list(APPEND CMAKE_CXX_FLAGS "${GAZEBO_CXX_FLAGS}")
-
-add_library (moving_plugin SHARED src/moving_plugin.cc)
-target_link_libraries(moving_plugin ${GAZEBO_LIBRARIES})
-
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/mid_project.cpp
+#   src/${PROJECT_NAME}/final_project.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -145,7 +133,7 @@ target_link_libraries(moving_plugin ${GAZEBO_LIBRARIES})
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/mid_project_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/final_project_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -209,7 +197,7 @@ target_link_libraries(moving_plugin ${GAZEBO_LIBRARIES})
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_mid_project.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_final_project.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
