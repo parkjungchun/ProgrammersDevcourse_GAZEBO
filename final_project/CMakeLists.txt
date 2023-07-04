@@ -8,14 +8,9 @@ project(final_project)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  amcl
-  base_local_planner
-  dwa_local_planner
-  frontier_exploration
-  gmapping
-  map_server
-  move_base
-  navfn
+  rospy
+  urdf
+  xacro
 )
 
 ## System dependencies are found with CMake's conventions
@@ -110,7 +105,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES final_project
-#  CATKIN_DEPENDS amcl base_local_planner dwa_local_planner frontier_exploration gmapping map_server move_base navfn
+#  CATKIN_DEPENDS rospy urdf xacro
 #  DEPENDS system_lib
 )
 
