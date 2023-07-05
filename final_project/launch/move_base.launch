@@ -2,7 +2,7 @@
 <launch>
   
   <!-- Load turtlebot3 -->
-  <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" />
+  <include file="$(find final_project)/launch/turtlebot3_remote.launch" />
 
   <!-- Run the map server -->
   <arg name="map_file" default="$(find final_project)/map/my_map.yaml"/>

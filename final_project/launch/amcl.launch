@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-    <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" />
+    <include file="$(find final_project)/launch/turtlebot3_remote.launch" />
 
     <arg name="scan_topic" default="scan" />
     <!-- If the map file is changed, replace the name of yaml file -->
