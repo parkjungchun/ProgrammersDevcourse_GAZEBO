@@ -9,6 +9,8 @@ from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from geometry_msgs.msg import PoseArray, PoseWithCovarianceStamped
 from std_msgs.msg import Empty
 
+from time import sleep
+
 waypoints = []
 
 def convert_PoseWithCovarianceStamped_to_PoseArray(waypoints):
@@ -82,10 +84,6 @@ class GetPath(State):
             
             self.pose_array_publisher.publish(convert_PoseWithCovarianceStamped_to_PoseArray(waypoints))
 
-        rospy.loginfo("###############################")
-        rospy.loginfo("######### Get Path .. #########")
-        rospy.loginfo("###############################")
-
         # Path is ready! return success and move on to the next state (FOLLOW_PATH)
         return 'success'
 
@@ -120,14 +118,64 @@ class FollowPath(State):
 
             rospy.loginfo("Executing move_base goal to position (x, y): %s, %s" %
                           (waypoint.pose.pose.position.x, waypoint.pose.pose.position.y))
-            rospy.loginfo("To cancel the goal: 'rostopic pub -1 /move_base/cancel actionlib_msgs/GoalID -- {}'")
+
+            if waypoint.pose.pose.position.x == 4.741:
+                rospy.loginfo("#################################")
+                rospy.loginfo("##### Going to pick up food #####")
+                rospy.loginfo("#################################")
+                self.client.send_goal(goal=goal)
+                self.client.wait_for_result()
+                rospy.loginfo("#################################")
+                rospy.loginfo("####### Getting food ... ########")
+                rospy.loginfo("#################################")
+                sleep(5)
+
+            elif waypoint.pose.pose.position.x == 5.581:
+                rospy.loginfo("#################################")
+                rospy.loginfo("###### Going to serve No.3 ######")
+                rospy.loginfo("#################################")
+                self.client.send_goal(goal=goal)
+                self.client.wait_for_result()
+                rospy.loginfo("##################################")
+                rospy.loginfo("##### Serving No.3 complete  #####")
+                rospy.loginfo("##################################")
+                sleep(1)
+
+            elif waypoint.pose.pose.position.x == -5.581:
+                rospy.loginfo("#################################")
+                rospy.loginfo("###### Going to serve No.4 ######")
+                rospy.loginfo("#################################")
+                self.client.send_goal(goal=goal)
+                self.client.wait_for_result()
+                rospy.loginfo("##################################")
+                rospy.loginfo("##### Serving No.3 complete  #####")
+                rospy.loginfo("##################################")
+                sleep(1)
+
+            elif waypoint.pose.pose.position.x == -12.089:
+                rospy.loginfo("#################################")
+                rospy.loginfo("###### Going to serve No.5 ######")
+                rospy.loginfo("#################################")
+                self.client.send_goal(goal=goal)
+                self.client.wait_for_result()
+                rospy.loginfo("##################################")
+                rospy.loginfo("##### Serving No.3 complete  #####")
+                rospy.loginfo("##################################")
+                sleep(1)
+                
+            elif waypoint.pose.pose.position.x == -8.240:
+                rospy.loginfo("###############################")
+                rospy.loginfo("####### Bring the dishes ######")
+                rospy.loginfo("###############################")
+                self.client.send_goal(goal=goal)
+                self.client.wait_for_result()
+                
+                
+            # rospy.loginfo("To cancel the goal: 'rostopic pub -1 /move_base/cancel actionlib_msgs/GoalID -- {}'")
+
             
-            rospy.loginfo("###############################")
-            rospy.loginfo("####### Following Path  #######")
-            rospy.loginfo("###############################")
-            
-            self.client.send_goal(goal=goal)
-            self.client.wait_for_result()
+            # self.client.send_goal(goal=goal)
+            # self.client.wait_for_result()
 
             
         return 'success'
@@ -140,7 +188,7 @@ class PathComplete(State):
 
     def execute(self, userdata):
         rospy.loginfo("###############################")
-        rospy.loginfo("##### REACHED FINISH GATE #####")
+        rospy.loginfo("##### Fnish bring dishes ######")
         rospy.loginfo("###############################")
         return 'success'
 
