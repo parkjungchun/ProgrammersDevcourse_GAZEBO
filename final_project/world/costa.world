@@ -7799,7 +7799,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>/home/parkjungchun/sim_ws/src/chapter10/turtlebot3/turtlebot3/turtlebot3_description/meshes/bases/burger_base.stl</uri>
+              <uri>/home/ha/sim_ws/src/chapter10/turtlebot3/turtlebot3/turtlebot3_description/meshes/bases/burger_base.stl</uri>
             </mesh>
           </geometry>
           <material>
@@ -7814,7 +7814,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/parkjungchun/sim_ws/src/chapter10/turtlebot3/turtlebot3/turtlebot3_description/meshes/sensors/webcam.dae</uri>
+              <uri>/home/ha/sim_ws/src/chapter10/turtlebot3/turtlebot3/turtlebot3_description/meshes/sensors/webcam.dae</uri>
             </mesh>
           </geometry>
         </visual>
@@ -7823,8 +7823,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>/home/parkjungchun/sim_ws/src/chapter10/turtlebot3/turtlebot3/turtlebot3_description/meshes/sensors/lds.stl</uri>
-            </mesh>
+              <uri>/home/ha/sim_ws/src/chapter10/turtlebot3/turtlebot3/turtlebot3_description/meshes/sensors/lds.stl</uri>            </mesh>
           </geometry>
           <material>
             <script>
@@ -7977,7 +7976,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>/home/parkjungchun/sim_ws/src/chapter10/turtlebot3/turtlebot3/turtlebot3_description/meshes/wheels/left_tire.stl</uri>
+              <uri>/home/ha/sim_ws/src/chapter10/turtlebot3/turtlebot3/turtlebot3_description/meshes/wheels/left_tire.stl</uri>
             </mesh>
           </geometry>
           <material>
@@ -8057,7 +8056,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>/home/parkjungchun/sim_ws/src/chapter10/turtlebot3/turtlebot3/turtlebot3_description/meshes/wheels/right_tire.stl</uri>
+              <uri>/home/ha/sim_ws/src/chapter10/turtlebot3/turtlebot3/turtlebot3_description/meshes/wheels/right_tire.stl</uri>
             </mesh>
           </geometry>
           <material>
