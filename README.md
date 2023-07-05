@@ -13,7 +13,7 @@
 
 # Task
 - Mapping 작업을 위한 launch 파일 및 yaml 파일 작성
-- Localization 작업을 위한 launch 파일 및 vaml 파일 작성
+- Localization 작업을 위한 launch 파일 및 yaml 파일 작성
 - Navigation 작업을 위한 launch 파일 및 yaml 파일 작성
 - Waypoint 개념 활용
 - 배웠던 다양한 실습들을 활용해 추가적인 정보를 제공
