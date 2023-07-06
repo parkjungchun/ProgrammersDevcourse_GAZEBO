@@ -7823,8 +7823,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>/home/ha/sim_ws/src/chapter10/turtlebot3/turtlebot3/turtlebot3_description/meshes/sensors/lds.stl</uri>
-            </mesh>
+              <uri>/home/ha/sim_ws/src/chapter10/turtlebot3/turtlebot3/turtlebot3_description/meshes/sensors/lds.stl</uri>            </mesh>
           </geometry>
           <material>
             <script>

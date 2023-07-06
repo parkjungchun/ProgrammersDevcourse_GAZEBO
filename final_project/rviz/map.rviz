@@ -267,6 +267,22 @@ Visualization Manager:
       Topic: /particlecloud
       Unreliable: false
       Value: true
+    - Alpha: 1
+      Axes Length: 1
+      Axes Radius: 0.10000000149011612
+      Class: rviz/Pose
+      Color: 255; 25; 0
+      Enabled: true
+      Head Length: 0.30000001192092896
+      Head Radius: 0.5
+      Name: Pose
+      Queue Size: 10
+      Shaft Length: 1
+      Shaft Radius: 0.20000000298023224
+      Shape: Arrow
+      Topic: /move_base/current_goal
+      Unreliable: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -294,7 +310,7 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Angle: -3.1450021266937256
+      Angle: -3.1350042819976807
       Class: rviz/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
@@ -304,10 +320,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 296.0374450683594
+      Scale: 22.205772399902344
       Target Frame: map
-      X: -0.8192545771598816
-      Y: -4.678797721862793
+      X: -5.788762092590332
+      Y: -3.587064743041992
     Saved: ~
 Window Geometry:
   Displays:
@@ -325,5 +341,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1098
-  X: 72
-  Y: 27
+  X: 822
+  Y: 104
