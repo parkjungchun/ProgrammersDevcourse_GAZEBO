@@ -1,5 +1,6 @@
-# ad-control1-simulproject-team2
-자율주행 제어1기 시뮬레이션 서빙로봇 프로젝트를 위한 팀 레포
+# Serving Robot in GAZEBO Simulator
+
+Presentation Youtube : https://www.youtube.com/watch?v=sEKz3pSzL-0
 
 # Simulation World
 <img width="1163" alt="image" src="https://github.com/prgrms-ad-devcourse/ad-control1-simulproject-team2/assets/125460753/d210c74b-b5d1-4142-ab36-7f3d57bce0f2">
